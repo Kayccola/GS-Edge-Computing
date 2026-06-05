@@ -2,7 +2,7 @@
 
 # # ORBIT MIND - Monitoramento Preventivo de Fadiga Cognitiva
 
-## ## 🔗 Link e Demonstração do Projeto
+## ##  Link e Demonstração do Projeto
 
 https://wokwi.com/projects/465967595195384833
 <img width="689" height="721" alt="image" src="https://github.com/user-attachments/assets/049ac3ad-595d-4693-8992-e7ffde42498b" />
@@ -67,7 +67,7 @@ O sistema opera através de um ciclo contínuo de varredura e resposta imediata:
 * Mantenha o controle no início para observar o status estável de operação segura.
 * Desloque o controle além de 3/4 do caminho para testar o acionamento do alarme sonoro e visual de risco de burnout.
 
-## 📝 Explicação Breve do Código
+##  Explicação Breve do Código
 O firmware foi desenvolvido em C++ para a plataforma Arduino e se divide em três pilares principais:
 
 Configuração Inicial (setup): Inicializa a comunicação serial para monitoramento e ativa o barramento I2C para comunicação com a tela OLED. Caso a tela não seja detectada no endereço gráfico (0x3C), o sistema trava por segurança. Uma tela de abertura com o nome "ORBIT MIND" é exibida por 2 segundos.
