@@ -7,7 +7,7 @@ Enzo Oldani-RM571685
 
 ---
 
-# # ORBIT MIND - Monitoramento Preventivo de Fadiga Cognitiva
+# ORBIT MIND - Monitoramento Preventivo de Fadiga Cognitiva
 
 ##  Link e Demonstração do Projeto
 
