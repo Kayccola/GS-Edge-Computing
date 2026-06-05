@@ -52,7 +52,7 @@ O sistema opera através de um ciclo contínuo de varredura e resposta imediata:
 
 ---
 
-## Estrutura do Circuito (Mapeamento de Pinos)
+## Estrutura do Circuito (Mapeamento)
 
 | Componente | Pino no Componente | Pino de Conexão no Arduino | Tipo de Sinal |
 | --- | --- | --- | --- |
