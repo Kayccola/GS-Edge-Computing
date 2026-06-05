@@ -2,24 +2,24 @@
 
 # # ORBIT MIND - Monitoramento Preventivo de Fadiga Cognitiva
 
-## ##  Link e Demonstração do Projeto
+##  Link e Demonstração do Projeto
 
 https://wokwi.com/projects/465967595195384833
 <img width="689" height="721" alt="image" src="https://github.com/user-attachments/assets/049ac3ad-595d-4693-8992-e7ffde42498b" />
 
 ---
 
-## ## Descrição do Projeto
+## Descrição do Projeto
 
 O **ORBIT MIND** é um protótipo focado em saúde mental e segurança operacional para profissionais que atuam em ambientes de alta pressão, como missões aeroespaciais e centros de controle de missões críticas. O dispositivo funciona como um sistema inteligente capaz de processar dados em tempo real para monitorar os níveis de atenção, estresse e exaustão psicológica do usuário, visando mitigar o risco de acidentes causados por fadiga.
 
-## ## Objetivo da Solução
+## Objetivo da Solução
 
 Evitar falhas humanas provocadas pelo esgotamento mental e prevenir o desenvolvimento do Burnout. A solução coleta os indicadores lógicos do usuário e gera alertas preventivos, avisando tanto o operador quanto a central de controle no exato momento em que os limites saudáveis de estresse são ultrapassados. Isso possibilita uma tomada de decisão rápida, como a pausa programada ou a substituição do profissional antes que um erro crítico aconteça.
 
 ---
 
-## ## Componentes Utilizados
+## Componentes Utilizados
 
 Para simular essa tecnologia no ambiente do **Wokwi**, estruturamos o circuito utilizando os seguintes elementos eletrônicos:
 
@@ -30,7 +30,7 @@ Para simular essa tecnologia no ambiente do **Wokwi**, estruturamos o circuito u
 
 ---
 
-## ## Explicação do Funcionamento
+## Explicação do Funcionamento
 
 O sistema opera através de um ciclo contínuo de varredura e resposta imediata:
 
@@ -45,7 +45,7 @@ O sistema opera através de um ciclo contínuo de varredura e resposta imediata:
 
 ---
 
-## ## Estrutura do Circuito (Mapeamento de Pinos)
+## Estrutura do Circuito (Mapeamento de Pinos)
 
 | Componente | Pino no Componente | Pino de Conexão no Arduino | Tipo de Sinal |
 | --- | --- | --- | --- |
@@ -58,7 +58,7 @@ O sistema opera através de um ciclo contínuo de varredura e resposta imediata:
 
 ---
 
-## ## Instruções de Execução
+## Instruções de Execução
 
 1. Acesse o link do simulador fornecido no topo deste documento.
 2. Certifique-se de que as bibliotecas `Adafruit SSD1306` e `Adafruit GFX Library` estejam instaladas no gerenciador de bibliotecas lateral.
@@ -75,3 +75,72 @@ Configuração Inicial (setup): Inicializa a comunicação serial para monitoram
 Mapeamento de Dados: No loop principal (loop), a função analogRead(A0) captura o valor gerado pelo potenciômetro (que varia de 0 a 1023). Logo em seguida, a função map() converte essa leitura matemática em uma porcentagem de 0 a 100%, tornando o dado interpretável como nível de fadiga.
 
 Condicional de Segurança: O código avalia o percentual obtido. Se o valor for menor que 75%, ele limpa os alarmes com o comando noTone(). Se atingir 75% ou mais, a função tone(buzzer, 1000) é acionada em conjunto com o comando delay() para criar um efeito sonoro intermitente de alerta, enquanto a tela OLED atualiza os textos dinamicamente via funções de desenho gráfico (display.display()).
+
+## Código Completo
+```cpp
+#include <Wire.h>
+#include <Adafruit_GFX.h>
+#include <Adafruit_SSD1306.h>
+
+#define SCREEN_WIDTH 128
+#define SCREEN_HEIGHT 64
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
+
+const int pinoPotenciometro = A0;
+const int buzzer = 11;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(buzzer, OUTPUT);
+
+  if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) { 
+    Serial.println(F("Erro: Display OLED nao encontrado!"));
+    for(;;);
+  }
+  
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  display.setCursor(30, 20);
+  display.println("ORBIT MIND");
+  display.setCursor(20, 40);
+  display.println("Inicializando...");
+  display.display();
+  delay(2000);
+}
+
+void loop() {
+  int leitura = analogRead(pinoPotenciometro);
+  int nivelEstresse = map(leitura, 0, 1023, 0, 100);
+
+  display.clearDisplay();
+  display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);
+  
+  display.setCursor(15, 0);
+  display.println("--- ORBIT MIND ---");
+  
+  display.setCursor(0, 22);
+  display.setTextSize(2);
+  display.print("Fadiga: ");
+  display.print(nivelEstresse);
+  display.println("%");
+
+  display.setTextSize(1);
+  display.setCursor(0, 52);
+
+  if (nivelEstresse < 75) {
+    display.println("Status: Operacao Segura"); 
+    noTone(buzzer);
+  } else {
+    display.println("ALERTA: RISCO BURNOUT"); 
+    tone(buzzer, 1000); 
+    delay(150);
+    noTone(buzzer);
+  }
+
+  display.display();
+  delay(200);
+}
+```
