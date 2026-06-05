@@ -1,5 +1,5 @@
 ## Integrantes:
-<br>Kayque Amaro-RM572031
+Kayque Amaro-RM572031
 <br>Giulia Russo-RM57
 <br>Kauan Merida-RM573997
 <br>Victoria Bandeira-RM57
