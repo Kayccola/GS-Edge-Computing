@@ -18,7 +18,7 @@ https://wokwi.com/projects/465967595195384833
 
 ## Descrição do Projeto
 
-O **ORBIT MIND** é um protótipo focado em saúde mental e segurança operacional para profissionais que atuam em ambientes de alta pressão, como missões aeroespaciais e centros de controle de missões críticas. O dispositivo funciona como um sistema inteligente capaz de processar dados em tempo real para monitorar os níveis de atenção, estresse e exaustão psicológica do usuário, visando mitigar o risco de acidentes causados por fadiga.
+O **ORBIT MIND** é um protótipo focado em saúde mental e segurança operacional para profissionais que atuam em ambientes de alta pressão, como empresas, hospitais, centros de controle, universidades e o cotidiano das grandes cidades. O dispositivo funciona como um sistema inteligente capaz de processar dados em tempo real para monitorar os níveis de atenção, estresse e exaustão psicológica do usuário, visando mitigar o risco de acidentes causados por fadiga.
 
 ## Objetivo da Solução
 
