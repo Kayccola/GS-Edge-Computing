@@ -1,9 +1,9 @@
 ## Integrantes:
-Kayque Amaro-RM572031
-<br>Giulia Russo-RM571468
-<br>Kauan Merida-RM573997
-<br>Victoria Bandeira-RM5783
-<br>Enzo Oldani-RM571685
+Enzo Oldani - RM571685
+<br>Giulia Russo - RM571468
+<br>Kauan Merida - RM573997
+<br>Kayque Amaro - RM572031
+<br>Victoria Bandeira - RM5783
 
 ---
 
